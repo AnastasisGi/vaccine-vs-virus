@@ -1,18 +1,8 @@
-// class Game {
-//   constructor(element) {
-//     this.element = element
-//   }
-
-//   render() {
-
-//   }
-// }
-
 function startGame() {
   myGameArea.start();
 }
 
-var myGameArea = {
+let myGameArea = {
   canvas : document.createElement("canvas"),
   start : function() {
     this.canvas.width = 480;
