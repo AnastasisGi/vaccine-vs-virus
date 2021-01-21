@@ -42,7 +42,9 @@ function component(width, height, color, x, y) {
 // function updateGame
 function updateGameArea() {
   myGameArea.clear();
-  obstacleBlock.update();
+  obstacleBlock.y -= -4;
+  obstacleBlock.update()
+
 }
 
 window.addEventListener('load', () => {
