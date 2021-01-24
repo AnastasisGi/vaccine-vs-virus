@@ -27,4 +27,5 @@ function playerPiece(width, height, color, canvasWidth, y) {
   }
 }
 
-module.exports = playerPiece;
+// module.exports = playerPiece;
+export default playerPiece;

@@ -1,6 +1,9 @@
+// const playerPiece = require('playerPiece');
+import playerPiece from 'playerPiece';
+
 function startGame() {
   myGameArea.start();
-  myGamePiece = new component(30, 30, "red", (myGameArea.canvas.width/2) - 15, myGameArea.canvas.height - 30);
+  myGamePiece = new playerPiece(30, 30, "red", myGameArea.canvas.width, myGameArea.canvas.height - 30)
 }
 
 let myGameArea = {
@@ -40,10 +43,10 @@ function updateGameArea() {
 window.addEventListener('load', () => {
   startGame();
   window.addEventListener('keydown', (event) => {
-    if (event.keyCode === 39 && myGamePiece.x < myGameArea.canvas.width - myGamePiece.width) {
-      myGamePiece.x += 10;
-    } else if (event.keyCode === 37 && myGamePiece.x > 0) {
-      myGamePiece.x -= 10;
+    if (event.keyCode === 39) {
+      myGamePiece.moveRight(10);
+    } else if (event.keyCode === 37) {
+      myGamePiece.moveLeft(10);
     };
   });
 });
