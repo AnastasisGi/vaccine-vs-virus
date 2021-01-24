@@ -1,4 +1,5 @@
 const playerPiece = require('../src/playerPiece');
+// import {playerPiece} from './playerPiece.js';
 
 let testPlayerPiece;
 let pieceWidth;

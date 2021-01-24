@@ -1,4 +1,5 @@
-import {playerPiece} from './playerPiece.js';
+// import {playerPiece} from './playerPiece.js';
+// const playerPiece = require('./playerPiece');
 
 function startGame() {
   myGameArea.start();

@@ -7,8 +7,8 @@ A Snake vs. Block style game, with a pandemic twist.
 Tests are written using the Jest framework. To install and run tests:
 
 ```sh
-yarn add --dev jest
-yarn test
+npm install --save-dev jest
+npm run test
 ```
 
 ## Running in Development
@@ -16,7 +16,11 @@ Modular JavaScript cannot simply access separate script files from your local fi
 
 If you haven't already, install:
 ```sh
-npm install -g http-server
+npm install --global http-server
+```
+or
+```sh
+brew install http-server
 ```
 
 And from the root directory of this repository run:
