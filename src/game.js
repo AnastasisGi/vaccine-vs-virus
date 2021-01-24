@@ -1,5 +1,4 @@
-// const playerPiece = require('playerPiece');
-import playerPiece from 'playerPiece';
+import {playerPiece} from './playerPiece.js';
 
 function startGame() {
   myGameArea.start();
@@ -37,7 +36,7 @@ function component(width, height, color, x, y) {
 
 function updateGameArea() {
   myGameArea.clear();
-  myGamePiece.update();
+  myGamePiece.update(myGameArea);
 }
 
 window.addEventListener('load', () => {

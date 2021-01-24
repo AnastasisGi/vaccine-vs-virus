@@ -4,8 +4,8 @@ function playerPiece(width, height, color, canvasWidth, y) {
   this.x = (canvasWidth/2)-(width/2);
   this.y = y;
   this.maximumX = canvasWidth - this.width
-  this.update = function(){
-    ctx = myGameArea.context;
+  this.update = function(gameArea){
+    let ctx = gameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   };
@@ -27,5 +27,4 @@ function playerPiece(width, height, color, canvasWidth, y) {
   }
 }
 
-// module.exports = playerPiece;
-export default playerPiece;
+export {playerPiece};
