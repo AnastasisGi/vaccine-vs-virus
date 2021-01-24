@@ -13,6 +13,13 @@ let myGameArea = {
   }
 }
 
+
 window.addEventListener('load', () => {
-  startGame();
+  let element = document.getElementById('app')
+  element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
+  let button = document.getElementById('start-game')
+  button.addEventListener('click', () => {
+    element.innerHTML = ""
+    startGame();
+  })
 });
