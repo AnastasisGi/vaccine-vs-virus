@@ -41,9 +41,9 @@ window.addEventListener('load', () => {
   startGame();
   window.addEventListener('keydown', (event) => {
     if (event.keyCode === 39 && myGamePiece.x < myGameArea.canvas.width - myGamePiece.width) {
-      myGamePiece.x += 5;
+      myGamePiece.x += 10;
     } else if (event.keyCode === 37 && myGamePiece.x > 0) {
-      myGamePiece.x -= 5;
+      myGamePiece.x -= 10;
     };
   });
 });
