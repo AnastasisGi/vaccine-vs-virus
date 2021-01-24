@@ -65,7 +65,6 @@ function updateGameArea() {
     gameViruses[i].update();
   }
 }
-
 window.addEventListener('load', () => {
   startGame();
 });
