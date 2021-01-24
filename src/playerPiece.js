@@ -11,9 +11,12 @@ function playerPiece(width, height, color, x, y) {
   };
 
   this.moveLeft= function(distance){
-    this.x -= distance;
+    if (this.x - distance < 0) {
+      this.x = 0;
+    } else {
+      this.x -= distance;
+    }
   };
-
 }
 
 

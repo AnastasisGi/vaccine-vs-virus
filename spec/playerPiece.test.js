@@ -14,9 +14,13 @@ describe('Moving the player piece on the left',()=>{
     )
   })
 
-  test('THe piece gets moved on the left, x gets smaller',()=>{
+  test('The piece gets moved on the left, x gets smaller',()=>{
     testPlayerPiece.moveLeft(5)
     expect(testPlayerPiece.x).toEqual(45)
-  }
-  );
+  });
+
+  test('The piece does not exit the frame to the left, x is never less than 0', ()=> {
+    testPlayerPiece.moveLeft(55);
+    expect(testPlayerPiece.x).toEqual(0);
+  })  
 })
