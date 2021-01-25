@@ -7,7 +7,6 @@ A Snake vs. Block style game, with a pandemic twist.
 Tests are written using the Jest framework. To install and run tests:
 
 ```sh
-npm install --save-dev jest
 npm run test
 ```
 
@@ -27,6 +26,6 @@ And from the root directory of this repository run:
 ```sh
 http-server -c-1
 ```
-Open your browser and navigate to `http://localhost:8080/src/index.html/`
+Open your browser and navigate to `http://localhost:8080/src/index.html`
 
 
