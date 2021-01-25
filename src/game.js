@@ -1,5 +1,4 @@
-// import {playerPiece} from './playerPiece.js';
-// const playerPiece = require('./playerPiece');
+import { playerPiece } from './playerPiece.js';
 
 function startGame() {
   myGameArea.start();
@@ -7,8 +6,8 @@ function startGame() {
 }
 
 let myGameArea = {
-  canvas : document.createElement("canvas"),
-  start : function() {
+  canvas: document.createElement("canvas"),
+  start: function () {
     this.canvas.width = 480;
     this.canvas.height = 800;
     this.canvas.style = "border: 2px solid"
@@ -16,7 +15,7 @@ let myGameArea = {
     document.body.insertBefore(this.canvas, document.body.childNodes[0]);
     this.interval = setInterval(updateGameArea, 20);
   },
-  clear : function() {
+  clear: function () {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
@@ -28,7 +27,7 @@ function component(width, height, color, x, y) {
   this.height = height;
   this.x = x;
   this.y = y;
-  this.update = function(){
+  this.update = function () {
     ctx = myGameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
