@@ -20,6 +20,7 @@ let myGameArea = {
   }
 }
 
+
 let myGamePiece;
 
 function component(width, height, color, x, y) {
@@ -40,12 +41,18 @@ function updateGameArea() {
 }
 
 window.addEventListener('load', () => {
+   let element = document.getElementById('app')
+   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
+   let button = document.getElementById('start-game')
+  button.addEventListener('click', () => {
+    element.innerHTML = ""
   startGame();
   window.addEventListener('keydown', (event) => {
-    if (event.keyCode === 39) {
+      if (event.keyCode === 39) {
       myGamePiece.moveRight(10);
-    } else if (event.keyCode === 37) {
+      } else if (event.keyCode === 37) {
       myGamePiece.moveLeft(10);
-    };
+      };
   });
+
 });
