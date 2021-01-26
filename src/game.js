@@ -1,8 +1,8 @@
 import { playerPiece } from './playerPiece.js';
 
-let virusBlock;
-let gameViruses = [];
-let myGamePiece;
+var virusBlock;
+var gameViruses = [];
+
 
 function startGame() {
   // virusBlock = new component(50, 50, 'green', 300, 120);
@@ -40,7 +40,7 @@ function component(width, height, color, x, y) {
   this.x = x;
   this.y = y;
   this.update = function () {
-    let ctx = myGameArea.context;
+    ctx = myGameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
@@ -65,7 +65,7 @@ function updateGameArea() {
     gameViruses.push(new component(100, 100, "red", x, y));
   }
 
-  for ( let i = 0; i < gameViruses.length; i += 1) {
+  for (i = 0; i < gameViruses.length; i += 1) {
     gameViruses[i].y += 1;
     gameViruses[i].update();
   }
