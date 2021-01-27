@@ -10,8 +10,7 @@ function virusBlock(width, height, colour, x, y) {
   }
 
   this.render = function(gameArea) {
-    gameArea.setFillStyle(this.colour)
-    gameArea.context.fillRect(this.x, this.y, this.width, this.height)
+    gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
   }
 }
 

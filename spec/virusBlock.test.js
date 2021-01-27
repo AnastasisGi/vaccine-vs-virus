@@ -18,28 +18,17 @@ describe('virus block', () => {
   })
 
   describe('it renders on the canvas', () => {
-    let mockCanvasContext,
-     mockGameArea;
+    let mockGameArea;
 
     beforeEach(() => {
-      mockCanvasContext = {fillRect: () => {}}
       mockGameArea = {
-        context: mockCanvasContext,
-        setFillStyle: () => {}
+        drawRectangularObject: () => {}
       }
     })
-    test('it renders at the correct co-ordinates', () => {
-      jest.spyOn(mockCanvasContext, 'fillRect')
+    test('it provides rendering details to the game area', () => {
+      jest.spyOn(mockGameArea, 'drawRectangularObject')
       testVirusBlock.render(mockGameArea)
-      expect(mockCanvasContext.fillRect).toHaveBeenCalledWith(startx, starty, width, height)
+      expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(width, height, colour, startx, starty)
     })
-
-    test('it renders with the correct colour', () => {
-      jest.spyOn(mockGameArea, 'setFillStyle')
-      testVirusBlock.render(mockGameArea)
-      expect(mockGameArea.setFillStyle).toHaveBeenCalledWith(colour)
-    })
-
   })
-
 })
