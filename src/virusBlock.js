@@ -5,11 +5,11 @@ function virusBlock(width, height, colour, x, y) {
   this.y = y;
   this.colour = colour
 
-  this.drop = function(distance) {
+  this.drop = (distance) => {
     this.y += distance
   }
 
-  this.render = function(gameArea) {
+  this.render = (gameArea) => {
     gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
   }
 }
