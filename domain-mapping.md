@@ -10,7 +10,7 @@ game
 
 gamePiece
 Properties: X, Y, width, canvasWidth(?), height, color
-Verbs (methods): 
+Verbs (methods):
 - moveRight(distance)
 - moveLeft(distance)
 - update/render
@@ -22,10 +22,10 @@ Verb (methods):
 - createVaccine (returns a virus Block with random strength and X-position)
 
 virusBlock
-Properties: X, Y, width, height, color, strength
+Properties: width, height, color, X, Y, strength
 Verbs (methods):
 - drop(distance)
-- update/render
+- render
 - cycle  (Gets stronger/bigger)
 
 

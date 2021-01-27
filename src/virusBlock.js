@@ -7,6 +7,10 @@ function virusBlock(width, height, color, x, y) {
   this.drop = function(distance) {
     this.y += distance
   }
+
+  this.render = function(gameArea) {
+    gameArea.context.fillRect(this.x, this.y, this.width, this.height)
+  }
 }
 
 export { virusBlock };
