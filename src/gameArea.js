@@ -4,6 +4,7 @@ function gameArea(width, height, canvas) {
 
   this.drawRectangularObject = (width, height, colour, x, y) => {
     this.context.fillStyle = colour;
+    this.context.fillRect(x, y, width, height);
   }
 }
 
