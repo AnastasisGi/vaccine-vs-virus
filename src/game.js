@@ -1,11 +1,10 @@
 import { playerPiece } from './playerPiece.js';
+import { virusBlock } from './virusBlock.js';
 
-let virusBlock;
 let gameViruses = [];
 let myGamePiece;
 
 function startGame() {
-  // virusBlock = new component(50, 50, 'green', 300, 120);
   myGameArea.start();
   myGamePiece = new playerPiece(30, 30, "red", myGameArea.canvas.width, myGameArea.canvas.height - 30)
 }
@@ -23,7 +22,6 @@ let myGameArea = {
   },
   clear: function () {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-
   }
 }
 
@@ -44,6 +42,21 @@ function component(width, height, color, x, y) {
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   }
+  this.collision = function (virusBlock) {
+    let left = this.x;
+    let right = this.x + (this.width);
+    let top = this.y;
+    let bottom = this.y + (this.height);
+    let virusleft = virusBlock.x;
+    let virusright = virusBlock.x + (virusBlock.width);
+    let virustop = virusBlock.y;
+    let virusbottom = virusBlock.y + (virusBlock.height);
+    let collision = true;
+    if ((bottom < virustop) || (top > virusbottom) || (right < virusleft) || (left > virusright)) {
+      collision = false;
+    }
+    return collision;
+  };
   this.newPos = function () {
     this.x += this.speedX;
     this.y += this.speedY;
@@ -65,7 +78,7 @@ function updateGameArea() {
     gameViruses.push(new component(100, 100, "red", x, y));
   }
 
-  for ( let i = 0; i < gameViruses.length; i += 1) {
+  for (let i = 0; i < gameViruses.length; i += 1) {
     gameViruses[i].y += 1;
     gameViruses[i].update();
   }
@@ -89,3 +102,5 @@ window.addEventListener('load', () => {
 
   });
 })
+
+export { component };

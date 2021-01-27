@@ -8,7 +8,7 @@ function playerPiece(width, height, color, canvasWidth, y) {
     let ctx = gameArea.context;
     ctx.fillStyle = color;
     ctx.fillRect(this.x, this.y, this.width, this.height);
-  };
+  }
 
   this.moveLeft = function (distance) {
     if (this.x - distance < 0) {
