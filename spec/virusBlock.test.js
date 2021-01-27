@@ -1,11 +1,11 @@
-import { virusBlock } from '../src/virusBlock.js';
+import {virusBlock} from '../src/virusBlock.js';
 
-let testVirusBlock;
-let width = 10;
-let height = 10;
-let startx = 0;
-let starty = 0;
-let colour = 'red';
+let colour = 'red',
+ height = 10,
+ startx = 0,
+ starty = 0,
+ testVirusBlock,
+ width = 10;
 
 beforeEach(() => {
   testVirusBlock = new virusBlock(width, height, colour, startx, starty)
@@ -18,22 +18,23 @@ describe('virus block', () => {
   })
 
   describe('it renders on the canvas', () => {
-    test('it renders at the correct co-ordinates', () => {
-      let mockCanvasContext = { fillRect: () => {} }
-      let mockGameArea = {
+    let mockCanvasContext,
+     mockGameArea;
+
+    beforeEach(() => {
+      mockCanvasContext = {fillRect: () => {}}
+      mockGameArea = {
         context: mockCanvasContext,
         setFillStyle: () => {}
       }
+    })
+    test('it renders at the correct co-ordinates', () => {
       jest.spyOn(mockCanvasContext, 'fillRect')
       testVirusBlock.render(mockGameArea)
       expect(mockCanvasContext.fillRect).toHaveBeenCalledWith(startx, starty, width, height)
     })
 
     test('it renders with the correct colour', () => {
-      let mockGameArea = {
-        setFillStyle: () => {},
-        context: { fillRect: () => {} }
-      }
       jest.spyOn(mockGameArea, 'setFillStyle')
       testVirusBlock.render(mockGameArea)
       expect(mockGameArea.setFillStyle).toHaveBeenCalledWith(colour)

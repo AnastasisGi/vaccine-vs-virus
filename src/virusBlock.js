@@ -15,4 +15,4 @@ function virusBlock(width, height, colour, x, y) {
   }
 }
 
-export { virusBlock };
+export {virusBlock};
