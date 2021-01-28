@@ -25,10 +25,22 @@ describe ('Is Collision', ()=> {
      }
      expect(isCollision(bigComponent1,bigComponent2)).toBe(false)
   })
+
+
+  test('THere is overlap, returns true',()=>{
+    bigComponent2 = {
+      x:1,
+      y:1,
+      width:10,
+      height:10
+     }
+     expect(isCollision(bigComponent1,bigComponent2)).toBe(true)
+  })
 })
 
 
-
+// component1(x=1,y=1, width=10, height=10)            true
+// component2(x=1,y=1, width=10, height=10)
 
 // component1(x=1,y=1, width=10, height=10)            false
 // component2(x=21,y=21, width=10, height=10)

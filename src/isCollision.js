@@ -1,10 +1,11 @@
 
-
-
 function isCollision (component1,component2){
-  return false;
 
-  
+  if (component1.x == component2.x ) {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 
