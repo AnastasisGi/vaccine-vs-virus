@@ -9,8 +9,8 @@ function gameArea(width, height, canvas) {
     this.context.fillRect(x, y, width, height);
   }
 
-  this.clearRectangularObject = (x, y) => {
-    this.context.clearRect(x, y, this.canvas.width, this.canvas.height);
+  this.clearCanvas = () => {
+    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
 }
 

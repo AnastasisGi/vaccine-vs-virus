@@ -9,8 +9,6 @@ let componentWidth = 10;
 let componentHeight = 20;
 let componentX = 30;
 let componentY = 40;
-let startX = 0;
-let startY = 0;
 
 beforeEach(() => {
   mockContext = {
@@ -38,10 +36,10 @@ describe('rendering a rectangular object', () => {
   })
 })
 
-describe('deleting a rectangular object', () => {
-  test('it deletes the object', () => {
+describe('clearing the canvas', () => {
+  test('it clears the cobjects from the canvas', () => {
     jest.spyOn(mockContext, 'clearRect');
-    testGameArea.clearRectangularObject(startX, startY)
-    expect(mockContext.clearRect).toHaveBeenCalledWith(startX, startY, testGameArea.canvas.width, testGameArea.canvas.height)
+    testGameArea.clearCanvas()
+    expect(mockContext.clearRect).toHaveBeenCalledWith(0, 0, testGameArea.canvas.width, testGameArea.canvas.height)
   })
 })
