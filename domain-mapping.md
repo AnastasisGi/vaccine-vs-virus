@@ -51,3 +51,41 @@ render(targetElement, score, lives)
 
 gameArea
 Properties: canvas
+
+function isCollision (component1, component2):
+
+
+input                                               output
+component1(x=1,y=1, width=10, height=10)            false
+component2(x=21,y=21, width=10, height=10)
+
+component1(x=1,y=1, width=10, height=10)            false
+component2(x=1,y=21, width=10, height=10)
+
+component1(x=1,y=1, width=10, height=10)            false
+component2(x=21,y=1, width=10, height=10)
+
+component1(x=1,y=1, width=10, height=10)            true
+component2(x=1,y=1, width=10, height=10)
+
+
+component1(x=1,y=1, width=10, height=10)            true
+component2(x=1,y=5, width=10, height=10)
+
+
+component1(x=1,y=1, width=10, height=10)            true
+component2(x=5,y=1, width=10, height=10)
+
+
+component1(x=1,y=1, width=10, height=10)            true
+component2(x=5,y=5, width=10, height=10)
+
+component1(x=1,y=1, width=3, height=10)            false
+component2(x=5,y=1, width=10, height=10)
+
+
+component1(x=1,y=1, width=10, height=3)            false
+component2(x=1,y=5, width=10, height=10)
+
+component1(x=1, y=1, width=3, height=3)            false
+component2(x=5, y=5, width=10, height=10)
