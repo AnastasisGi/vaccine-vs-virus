@@ -9,11 +9,17 @@ let componentWidth = 10;
 let componentHeight = 20;
 let componentX = 30;
 let componentY = 40;
+let game;
+let time = 20;
 
 beforeEach(() => {
   mockContext = {
     fillRect: () => { },
     clearRect: () => { }
+  }
+
+  game = {
+    updateGameArea: () => { }
   }
 
   mockCanvas = {
@@ -37,9 +43,17 @@ describe('rendering a rectangular object', () => {
 })
 
 describe('clearing the canvas', () => {
-  test('it clears the cobjects from the canvas', () => {
+  test('it clears the objects from the canvas', () => {
     jest.spyOn(mockContext, 'clearRect');
     testGameArea.clearCanvas()
     expect(mockContext.clearRect).toHaveBeenCalledWith(0, 0, testGameArea.canvas.width, testGameArea.canvas.height)
+  })
+})
+
+describe('update the display', () => {
+  test('it updates the canvas', () => {
+    global.setInterval = jest.fn()
+    testGameArea.updateDisplay(game.updateGameArea, time)
+    expect(global.setInterval).toHaveBeenCalledWith(game.updateGameArea, time)
   })
 })

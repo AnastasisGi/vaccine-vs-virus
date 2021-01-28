@@ -12,6 +12,10 @@ function gameArea(width, height, canvas) {
   this.clearCanvas = () => {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
+
+  this.updateDisplay = (updateGameArea, time) => {
+    setInterval(updateGameArea, time);
+  }
 }
 
 export { gameArea };
