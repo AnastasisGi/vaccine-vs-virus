@@ -3,17 +3,22 @@ import { playerPiece } from '../src/playerPiece.js';
 let testPlayerPiece;
 let pieceWidth;
 let canvasWidth;
+let canvasHeight;
+let pieceHeight;
+let colour;
 
 beforeEach(() => {
   pieceWidth = 30;
   canvasWidth = 50;
-
+  canvasHeight = 400;
+  pieceHeight = 30
+  colour = "red"
   testPlayerPiece = new playerPiece(
     pieceWidth,
-    30,
+    pieceHeight,
     "red",
     canvasWidth,
-    50
+    canvasHeight
   );
 });
 
@@ -46,3 +51,19 @@ describe('Moving the player piece to the right', () => {
     expect(testPlayerPiece.x).toEqual(canvasWidth - pieceWidth);
   })
 });
+
+
+describe('it renders on the canvas', () => {
+  let mockGameArea;
+
+  beforeEach(() => {
+    mockGameArea = {
+      drawRectangularObject: () => {}
+    }
+  })
+  test('it provides rendering details to the game area', () => {
+    jest.spyOn(mockGameArea, 'drawRectangularObject')
+    testPlayerPiece.render(mockGameArea)
+    expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(pieceWidth, pieceHeight, colour, (canvasWidth / 2) - (pieceWidth / 2), canvasHeight)
+  })
+})
