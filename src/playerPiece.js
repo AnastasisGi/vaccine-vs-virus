@@ -31,9 +31,9 @@ function playerPiece(image) {
     }
   }
 
-  // this.render = (gameArea) => {
-  //   gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
-  // }
+  this.render = (gameArea) => {
+    gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
+  }
 }
 
 export { playerPiece };

@@ -55,17 +55,17 @@ describe('Moving player piece', () => {
   });
 });
 
-// describe('it renders on the canvas', () => {
-//   let mockGameArea;
+describe('it renders on the canvas', () => {
+  let mockGameArea;
 
-//   beforeEach(() => {
-//     mockGameArea = {
-//       drawRectangularObject: () => { }
-//     }
-//   })
-//   test('it provides rendering details to the game area', () => {
-//     jest.spyOn(mockGameArea, 'drawRectangularObject')
-//     testPlayerPiece.render(mockGameArea)
-//     expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(pieceWidth, pieceHeight, colour, (canvasWidth / 2) - (pieceWidth / 2), canvasHeight)
-//   })
-// })
+  beforeEach(() => {
+    mockGameArea = {
+      drawImage: () => { }
+    }
+  })
+  test('it provides rendering details to the game area', () => {
+    jest.spyOn(mockGameArea, 'image')
+    testPlayerPiece.render(mockGameArea)
+    expect(mockGameArea.drawImage).toHaveBeenCalledWith((mockCanvas.width / 2) - (mockImage.Width / 2), mockCanvas.height)
+  })
+})

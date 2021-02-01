@@ -1,9 +1,8 @@
-import {playerPiece} from './playerPiece.js';
-import {gameArea} from './gameArea.js';
-import {virusBlock} from './virusBlock.js';
+import { playerPiece } from './playerPiece.js';
+import { gameArea } from './gameArea.js';
 
 let myGameArea,
- myGamePiece;
+  myGamePiece;
 
 window.addEventListener('load', () => {
   let element = document.getElementById('app')
@@ -13,7 +12,6 @@ window.addEventListener('load', () => {
 
   button.addEventListener('click', () => {
     element.innerHTML = ""
-
 
     let canvas = document.createElement("canvas")
 
@@ -27,12 +25,7 @@ window.addEventListener('load', () => {
       } else if (event.keyCode === 37) {
         myGamePiece.moveLeft(10);
       }
-myGameArea.updateDisplay(updateGameArea, 20)
+      myGameArea.updateDisplay(updateGameArea, 20)
     });
   });
 })
-
-function updateGameArea() {
-  myGameArea.clearCanvas();
-  myGamePiece.render(myGameArea);
-}
