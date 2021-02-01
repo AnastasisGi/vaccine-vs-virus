@@ -18,7 +18,7 @@ describe('Set starting position', () => {
     expect(testPlayerPiece.x).toEqual((mockCanvas.width / 2) - (mockImage.width / 2));
   })
 
-  test('The image is centred on the bottom of the canvas', ()=>{
+  test('The image is centred on the bottom of the canvas', () => {
     testPlayerPiece.setStartPosition(mockGameArea)
     expect(testPlayerPiece.y).toEqual(mockCanvas.height - (mockCanvas.height / 4));
   })
@@ -53,4 +53,19 @@ describe('Moving player piece', () => {
       expect(testPlayerPiece.x).toEqual(mockCanvas.width - mockImage.width);
     })
   });
-})
+});
+
+// describe('it renders on the canvas', () => {
+//   let mockGameArea;
+
+//   beforeEach(() => {
+//     mockGameArea = {
+//       drawRectangularObject: () => { }
+//     }
+//   })
+//   test('it provides rendering details to the game area', () => {
+//     jest.spyOn(mockGameArea, 'drawRectangularObject')
+//     testPlayerPiece.render(mockGameArea)
+//     expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(pieceWidth, pieceHeight, colour, (canvasWidth / 2) - (pieceWidth / 2), canvasHeight)
+//   })
+// })

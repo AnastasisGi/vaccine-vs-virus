@@ -5,7 +5,7 @@ function playerPiece(image) {
   this.y = 0;
   this.update = function (gameArea) {
     let ctx = gameArea.context;
-    ctx.fillStyle = color;
+    ctx.fillStyle = colour;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   };
 
@@ -30,6 +30,10 @@ function playerPiece(image) {
       this.x += distance;
     }
   }
+
+  // this.render = (gameArea) => {
+  //   gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
+  // }
 }
 
 export { playerPiece };
