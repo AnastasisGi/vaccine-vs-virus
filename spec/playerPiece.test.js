@@ -17,6 +17,11 @@ describe('Set starting position', () => {
     testPlayerPiece.setStartPosition(mockGameArea)
     expect(testPlayerPiece.x).toEqual((mockCanvas.width / 2) - (mockImage.width / 2));
   })
+
+  test('The image is centred on the bottom of the canvas', ()=>{
+    testPlayerPiece.setStartPosition(mockGameArea)
+    expect(testPlayerPiece.y).toEqual(mockCanvas.height - (mockCanvas.height / 4));
+  })
 })
 
 describe('Moving player piece', () => {

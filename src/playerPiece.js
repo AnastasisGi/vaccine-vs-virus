@@ -11,6 +11,7 @@ function playerPiece(image) {
 
   this.setStartPosition = function (gameArea) {
     this.x = (gameArea.canvas.width / 2) - (this.image.width / 2);
+    this.y = (gameArea.canvas.height - (gameArea.canvas.height / 4));
     this.maximumX = (gameArea.canvas.width - this.image.width);
   };
 
