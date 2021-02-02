@@ -32,7 +32,7 @@ beforeEach(() => {
 describe('rendering a rectangular object', () => {
   test('it fills the object with the specified colour', () => {
     testGameArea.drawRectangularObject(0, 0, 'red', 0, 0);
-    expect(mockContext.fillStyle).toEqual('red');
+    expect(mockContext.fillStyle).toEqual('orange');
   })
 
   test('it draws a rectangle with the specified coordinates', () => {
