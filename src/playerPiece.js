@@ -1,11 +1,13 @@
-function playerPiece(image) {
-  this.image = image;
-  this.x = 0;
-  this.maximumX = 0;
-  this.y = 0;
+function playerPiece(width, height, colour, canvasWidth, y) {
+  this.width = width;
+  this.height = height;
+  this.x = (canvasWidth / 2) - (width / 2);
+  this.y = y;
+  this.colour=colour;
+  this.maximumX = canvasWidth - this.width
   this.update = function (gameArea) {
     let ctx = gameArea.context;
-    ctx.fillStyle = color;
+    ctx.fillStyle = colour;
     ctx.fillRect(this.x, this.y, this.width, this.height);
   };
 
@@ -30,6 +32,13 @@ function playerPiece(image) {
       this.x += distance;
     }
   }
+
+  this.render = (gameArea) => {
+    gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
+  }
 }
+
+
+
 
 export { playerPiece };

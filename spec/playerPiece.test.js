@@ -1,15 +1,25 @@
 import { playerPiece } from '../src/playerPiece.js';
 
 let testPlayerPiece;
-let mockGameArea;
-let mockCanvas;
-let mockImage;
+let pieceWidth;
+let canvasWidth;
+let canvasHeight;
+let pieceHeight;
+let colour;
 
 beforeEach(() => {
-  mockImage = { width: 10, height: 20 };
-  mockCanvas = { width: 400, height: 800 };
-  mockGameArea = { canvas: mockCanvas };
-  testPlayerPiece = new playerPiece(mockImage);
+  pieceWidth = 30;
+  canvasWidth = 50;
+  canvasHeight = 400;
+  pieceHeight = 30
+  colour = "red"
+  testPlayerPiece = new playerPiece(
+    pieceWidth,
+    pieceHeight,
+    "red",
+    canvasWidth,
+    canvasHeight
+  );
 });
 
 describe('Set starting position', () => {
@@ -42,15 +52,24 @@ describe('Moving player piece', () => {
     });
   });
 
-  describe('Moving the player piece to the right', () => {
-    test('The piece gets moved to the right, x gets larger', () => {
-      testPlayerPiece.moveRight(5);
-      expect(testPlayerPiece.x).toEqual(200);
-    });
+  test('The piece does not exit the frame to the right', () => {
+    testPlayerPiece.moveRight(55);
+    expect(testPlayerPiece.x).toEqual(canvasWidth - pieceWidth);
+  })
+});
 
-    test('The piece does not exit the frame to the right', () => {
-      testPlayerPiece.moveRight(300);
-      expect(testPlayerPiece.x).toEqual(mockCanvas.width - mockImage.width);
-    })
-  });
+
+describe('it renders on the canvas', () => {
+  let mockGameArea;
+
+  beforeEach(() => {
+    mockGameArea = {
+      drawRectangularObject: () => {}
+    }
+  })
+  test('it provides rendering details to the game area', () => {
+    jest.spyOn(mockGameArea, 'drawRectangularObject')
+    testPlayerPiece.render(mockGameArea)
+    expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(pieceWidth, pieceHeight, colour, (canvasWidth / 2) - (pieceWidth / 2), canvasHeight)
+  })
 })
