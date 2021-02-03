@@ -4,11 +4,6 @@ function gameArea(width, height, canvas) {
   this.canvas.height = height;
   this.context = this.canvas.getContext('2d');
 
-  this.drawRectangularObject = (width, height, colour, x, y) => {
-    this.context.fillStyle = colour;
-    this.context.fillRect(x, y, width, height);
-  }
-
   this.clearCanvas = () => {
     this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
   }
@@ -16,6 +11,19 @@ function gameArea(width, height, canvas) {
   this.updateDisplay = (updateGameArea, time) => {
     setInterval(updateGameArea, time);
   }
+
+  this.drawPlayerImage = (image, x, y) => {
+    // let current_this = this
+    // let image = new Image();
+    // image.onload = function () {
+    //   current_this.context.drawImage(image, x, y, 50, 50);
+    // }
+    this.context.drawImage(image, x, y, 50, 50);
+    // image.src = "../assets/syringe.png";
+  }
+
+
+
 }
 
 export { gameArea };
