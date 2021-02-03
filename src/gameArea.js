@@ -2,6 +2,7 @@ function gameArea(width, height, canvas) {
   this.canvas = canvas;
   this.canvas.width = width;
   this.canvas.height = height;
+  this.canvas.style = "border: 2px solid";
   this.context = this.canvas.getContext('2d');
 
   this.clearCanvas = () => {
@@ -13,13 +14,10 @@ function gameArea(width, height, canvas) {
   }
 
   this.drawPlayerImage = (image, x, y) => {
-    // let current_this = this
-    // let image = new Image();
-    // image.onload = function () {
-    //   current_this.context.drawImage(image, x, y, 50, 50);
-    // }
-    this.context.drawImage(image, x, y, 50, 50);
-    // image.src = "../assets/syringe.png";
+    // let imageWidth = 25;
+    // let scaleBy = 30 / image.width;
+    // let imageHeight = (image.height * scaleBy) - 10;
+    this.context.drawImage(image, x, y, image.width, image.height);
   }
 
 

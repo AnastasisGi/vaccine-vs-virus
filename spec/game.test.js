@@ -1,34 +1,34 @@
-import { game } from '../src/game.js';
+// import { game } from '../src/game.js';
 
-describe('When updating the canvas', () => {
+// describe('When updating the canvas', () => {
 
-  test('It asks gameArea to clear the canvas', () => {
-    let myGameArea = {
-      clearCanvas: () => { }
-    }
-    let myGamePiece = {
-      render: () => { }
-    }
-    jest.spyOn(myGameArea, 'clearCanvas')
+//   test('It asks gameArea to clear the canvas', () => {
+//     let myGameArea = {
+//       clearCanvas: () => { }
+//     }
+//     let myGamePiece = {
+//       render: () => { }
+//     }
+//     jest.spyOn(myGameArea, 'clearCanvas')
 
-    let myGame = new game(myGameArea, myGamePiece)
-    myGame.updateGameArea();
-    expect(myGameArea.clearCanvas).toHaveBeenCalled();
-  })
+//     let myGame = new game(myGameArea, myGamePiece)
+//     myGame.updateGameArea();
+//     expect(myGameArea.clearCanvas).toHaveBeenCalled();
+//   })
 
-  test('It asks the gamePiece to rerender', () => {
+//   test('It asks the gamePiece to rerender', () => {
 
-    let myGameArea = {
-      clearCanvas: () => { }
-    }
-    let myGamePiece = {
-      render: () => { }
-    }
-    jest.spyOn(myGamePiece, 'render')
+//     let myGameArea = {
+//       clearCanvas: () => { }
+//     }
+//     let myGamePiece = {
+//       render: () => { }
+//     }
+//     jest.spyOn(myGamePiece, 'render')
 
-    let myGame = new game(myGameArea, myGamePiece)
-    myGame.updateGameArea();
-    expect(myGamePiece.render).toHaveBeenCalledWith(myGameArea);
-  })
+//     let myGame = new game(myGameArea, myGamePiece)
+//     myGame.updateGameArea();
+//     expect(myGamePiece.render).toHaveBeenCalledWith(myGameArea);
+//   })
 
-})
+// })
