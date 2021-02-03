@@ -28,19 +28,17 @@ function playerPiece(width, height, colour, canvasWidth, y) {
   }
 
   this.crashWith = function (virusBlock){
-    console.log(this.x);
-    console.log(this.width);
-    console.log(virusBlock.x);
     if (this.x + this.width < virusBlock.x) {
-      return false ;
-      console.log("inside first if")
+      return false
     } else if (this.x > virusBlock.x + virusBlock.width) {
       return false
-    console.log("inside second if")
-  } else
-    {return true
-      console.log("inside third if")}
-
+    } else if (playerPiece.y > virusBlock.y + virusBlock.height) {
+      return false
+    } else if (playerPiece.y + playerPiece.height < virusBlock.y) {
+      return false
+    } else {
+      return true
+    }
   }
 
   this.render = (gameArea) => {
