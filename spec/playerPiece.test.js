@@ -67,3 +67,24 @@ describe('it renders on the canvas', () => {
     expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(pieceWidth, pieceHeight, colour, (canvasWidth / 2) - (pieceWidth / 2), canvasHeight)
   })
 })
+
+
+describe('Player piece crashing with virus block',()=>{
+  let mockVirus;
+  mockVirus = {
+    x: 10,
+    y: 30,
+    width: 4,
+    height: 4
+  }
+
+  test('It returns false when it is not crashing',()=>{
+    testPlayerPiece.moveLeft(40)
+    expect(testPlayerPiece.crashWith(mockVirus)).toEqual(false)
+  })
+
+  test('It returns false when it is not crashing',()=>{
+    testPlayerPiece.moveRight(50)
+    expect(testPlayerPiece.crashWith(mockVirus)).toEqual(false)
+  })
+})

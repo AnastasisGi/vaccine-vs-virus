@@ -36,3 +36,22 @@ function updateGameArea() {
   myGameArea.clearCanvas();
   myGamePiece.render(myGameArea);
 }
+
+
+
+
+  function crashWith(virusBlock) {
+    var myleft = playerPiece.x;
+    var myright = playerPiece.x + (playerPiece.width);
+    var mytop = playerPiece.y;
+    var mybottom = playerPiece.y + (playerPiece.height);
+    var otherleft = virusBlock.x;
+    var otherright = virusBlock.x + (virusBlock.width);
+    var othertop = virusBlock.y;
+    var otherbottom = virusBlock.y + (virusBlock.height);
+    var crash = true;
+    if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+        crash = false;
+    }
+    return crash;
+}
