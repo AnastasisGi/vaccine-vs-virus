@@ -1,11 +1,13 @@
 import { playerPiece } from './playerPiece.js';
 import { gameArea } from './gameArea.js';
 
-let myGameArea, myPlayerPiece, image;
+let myGameArea, myPlayerPiece, syringeImage, vaccineImage;
 
 window.addEventListener('load', () => {
-  image = new Image();
-  image.src = "../assets/syringe.png";
+  syringeImage = new Image();
+  syringeImage.src = "../assets/syringe.png";
+  vaccineImage = new Image();
+  vaccineImage.src = "../assets/virus2.png";
 
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
@@ -19,12 +21,14 @@ window.addEventListener('load', () => {
     myGameArea = new gameArea(480, 800, canvas)
 
     let desiredImageWidth = 25;
-    let scaleBy = desiredImageWidth / image.width;
-    let desiredImageHeight = (image.height * scaleBy) - 10;
-    image.height = desiredImageHeight;
-    image.width = desiredImageWidth;
+    let scaleBy = desiredImageWidth / syringeImage.width;
+    let desiredImageHeight = (syringeImage.height * scaleBy) - 10;
+    syringeImage.height = desiredImageHeight;
+    syringeImage.width = desiredImageWidth;
+    vaccineImage.height = 100;
+    vaccineImage.width = 100;
 
-    myPlayerPiece = new playerPiece(image)
+    myPlayerPiece = new playerPiece(syringeImage)
     myPlayerPiece.setStartPosition(myGameArea)
 
     window.addEventListener('keydown', (event) => {
