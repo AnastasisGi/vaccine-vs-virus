@@ -3,11 +3,6 @@ function playerPiece(image) {
   this.x = 0;
   this.maximumX = 0;
   this.y = 0;
-  this.update = function (gameArea) {
-    let ctx = gameArea.context;
-    ctx.fillStyle = colour;
-    ctx.fillRect(this.x, this.y, this.width, this.height);
-  };
 
   this.setStartPosition = function (gameArea) {
     this.x = (gameArea.canvas.width / 2) - (this.image.width / 2)
@@ -31,8 +26,8 @@ function playerPiece(image) {
     }
   }
 
-  this.render = (gameArea, image) => {
-    gameArea.drawPlayerImage(image, this.x, this.y)
+  this.render = (gameArea) => {
+    gameArea.drawImage(this.image, this.x, this.y)
   }
 }
 

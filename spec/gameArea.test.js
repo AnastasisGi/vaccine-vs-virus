@@ -5,10 +5,6 @@ let height = 800;
 let testGameArea;
 let mockCanvas;
 let mockContext;
-let componentWidth = 10;
-let componentHeight = 20;
-let componentX = 30;
-let componentY = 40;
 let game;
 let time = 20;
 
@@ -31,19 +27,6 @@ beforeEach(() => {
   testGameArea = new gameArea(width, height, mockCanvas)
 })
 
-// describe('rendering a rectangular object', () => {
-//   test('it fills the object with the specified colour', () => {
-//     testGameArea.drawRectangularObject(0, 0, 'red', 0, 0);
-//     expect(mockContext.fillStyle).toEqual('red');
-//   })
-//
-//   test('it draws a rectangle with the specified coordinates', () => {
-//     jest.spyOn(mockContext, 'fillRect');
-//     testGameArea.drawRectangularObject(componentWidth, componentHeight, 'red', componentX, componentY);
-//     expect(mockContext.fillRect).toHaveBeenCalledWith(componentX, componentY, componentWidth, componentHeight);
-//   })
-// })
-
 describe('clearing the canvas', () => {
   test('it clears the objects from the canvas', () => {
     jest.spyOn(mockContext, 'clearRect');
@@ -62,9 +45,9 @@ describe('update the display', () => {
 
 describe('rendering a player image', () => {
   test('it asks the canvas the draw an image', () => {
-    class MockImage {}
+    class MockImage { }
     jest.spyOn(mockContext, 'drawImage')
-    testGameArea.drawPlayerImage(MockImage)
+    testGameArea.drawImage(MockImage)
     expect(mockContext.drawImage).toHaveBeenCalled()
   })
 })

@@ -6,7 +6,7 @@ let myGameArea, myPlayerPiece, image;
 window.addEventListener('load', () => {
   image = new Image();
   image.src = "../assets/syringe.png";
-  
+
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
   let button = document.getElementById('start-game')
@@ -26,7 +26,7 @@ window.addEventListener('load', () => {
 
     myPlayerPiece = new playerPiece(image)
     myPlayerPiece.setStartPosition(myGameArea)
-    
+
     window.addEventListener('keydown', (event) => {
       if (event.keyCode === 39) {
         myPlayerPiece.moveRight(10);
@@ -40,5 +40,5 @@ window.addEventListener('load', () => {
 
 function updateGameArea() {
   myGameArea.clearCanvas()
-  myPlayerPiece.render(myGameArea, image)
+  myPlayerPiece.render(myGameArea)
 }

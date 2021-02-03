@@ -13,14 +13,9 @@ function gameArea(width, height, canvas) {
     setInterval(updateGameArea, time);
   }
 
-  this.drawPlayerImage = (image, x, y) => {
-    // let imageWidth = 25;
-    // let scaleBy = 30 / image.width;
-    // let imageHeight = (image.height * scaleBy) - 10;
+  this.drawImage = (image, x, y) => {
     this.context.drawImage(image, x, y, image.width, image.height);
   }
-
-
 
 }
 

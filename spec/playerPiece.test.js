@@ -60,12 +60,12 @@ describe('it renders on the canvas', () => {
 
   beforeEach(() => {
     mockGameArea = {
-      drawPlayerImage: () => { }
+      drawImage: () => { }
     }
   })
   test('it provides rendering details to the game area', () => {
-    jest.spyOn(mockGameArea, 'drawPlayerImage')
+    jest.spyOn(mockGameArea, 'drawImage')
     testPlayerPiece.render(mockGameArea)
-    expect(mockGameArea.drawPlayerImage).toHaveBeenCalled()
+    expect(mockGameArea.drawImage).toHaveBeenCalled()
   })
 })
