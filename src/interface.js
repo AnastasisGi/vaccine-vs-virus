@@ -1,13 +1,14 @@
 import { playerPiece } from './playerPiece.js';
 import { gameArea } from './gameArea.js';
+import { virusBlock } from './virusBlock.js';
 
-let myGameArea, myPlayerPiece, syringeImage, vaccineImage;
+let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage;
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
   syringeImage.src = "../assets/syringe.png";
-  vaccineImage = new Image();
-  vaccineImage.src = "../assets/virus2.png";
+  virusImage = new Image();
+  virusImage.src = "../assets/virus2.png";
 
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
@@ -25,11 +26,12 @@ window.addEventListener('load', () => {
     let desiredImageHeight = (syringeImage.height * scaleBy) - 10;
     syringeImage.height = desiredImageHeight;
     syringeImage.width = desiredImageWidth;
-    vaccineImage.height = 100;
-    vaccineImage.width = 100;
+    virusImage.height = 100;
+    virusImage.width = 100;
 
     myPlayerPiece = new playerPiece(syringeImage)
     myPlayerPiece.setStartPosition(myGameArea)
+    myVirusBlock = new virusBlock(virusImage, 50, 50)
 
     window.addEventListener('keydown', (event) => {
       if (event.keyCode === 39) {
@@ -45,4 +47,5 @@ window.addEventListener('load', () => {
 function updateGameArea() {
   myGameArea.clearCanvas()
   myPlayerPiece.render(myGameArea)
+  myVirusBlock.render(myGameArea)
 }
