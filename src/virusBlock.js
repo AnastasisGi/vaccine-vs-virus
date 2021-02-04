@@ -1,17 +1,15 @@
-function virusBlock(width, height, colour, x, y) {
-  this.width = width;
-  this.height = height;
+function virusBlock(image, x, y) {
+  this.image = image;
   this.x = x;
   this.y = y;
-  this.colour = colour
 
   this.drop = (distance) => {
     this.y += distance
   }
 
   this.render = (gameArea) => {
-    gameArea.drawRectangularObject(this.width, this.height, this.colour, this.x, this.y)
+    gameArea.drawImage(this.image, this.x, this.y)
   }
 }
 
-export {virusBlock};
+export { virusBlock };

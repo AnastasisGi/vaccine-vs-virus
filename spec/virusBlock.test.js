@@ -1,14 +1,12 @@
-import {virusBlock} from '../src/virusBlock.js';
+import { virusBlock } from '../src/virusBlock.js';
 
-let colour = 'red',
- height = 10,
- startx = 0,
- starty = 0,
- testVirusBlock,
- width = 10;
+let startx = 0,
+  starty = 0,
+  testVirusBlock,
+  mockImage;
 
 beforeEach(() => {
-  testVirusBlock = new virusBlock(width, height, colour, startx, starty)
+  testVirusBlock = new virusBlock(mockImage, startx, starty)
 })
 
 describe('virus block', () => {
@@ -22,13 +20,13 @@ describe('virus block', () => {
 
     beforeEach(() => {
       mockGameArea = {
-        drawRectangularObject: () => {}
+        drawImage: () => { }
       }
     })
     test('it provides rendering details to the game area', () => {
-      jest.spyOn(mockGameArea, 'drawRectangularObject')
+      jest.spyOn(mockGameArea, 'drawImage')
       testVirusBlock.render(mockGameArea)
-      expect(mockGameArea.drawRectangularObject).toHaveBeenCalledWith(width, height, colour, startx, starty)
+      expect(mockGameArea.drawImage).toHaveBeenCalledWith(mockImage, startx, starty)
     })
   })
 })
