@@ -1,9 +1,10 @@
 import { playerPiece } from './playerPiece.js';
 import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
+import { gameViruses } from './gameViruses.js';
 
-let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage;
-let gameViruses = [];
+let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses;
+// let gameViruses = [];
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
@@ -37,6 +38,8 @@ window.addEventListener('load', () => {
     myPlayerPiece = new playerPiece(syringeImage)
     myPlayerPiece.setStartPosition(myGameArea)
     myVirusBlock = new virusBlock(virusImage, 50, 50)
+    myGameViruses = new gameViruses(virusBlock, 200, 300)
+
 
     window.addEventListener('keydown', (event) => {
       if (event.keyCode === 39) {
@@ -52,41 +55,14 @@ window.addEventListener('load', () => {
 function updateGameArea() {
   myGameArea.clearCanvas()
   myPlayerPiece.render(myGameArea)
-
-  function everyinterval(n) {
-    if ((myGameArea.frameNo % n) === 0) { return true; }
-    return false;
-  }
-
-  function getRandomInt(max) {
-    return Math.floor(Math.random() * Math.floor(max));
-  }
-
-  let x, y;
-  myGameArea.frameNo += 1;
-
-  if (myGameArea.frameNo == 1 || everyinterval(300)) {
-    x = getRandomInt(480 - virusImage.width);
-    y = 10;
-    gameViruses.push(new virusBlock(virusImage, x, 10));
-  } else if (everyinterval(200)) {
-    x = getRandomInt(480 - virusImage.width);
-    y = 10;
-    gameViruses.push(new virusBlock(virusImage, x, 10));
-  } else if (everyinterval(250)) {
-    x = getRandomInt(480 - ultraVirusImage.width);
-    y = 10;
-    let ultraVirusBlock = new virusBlock(ultraVirusImage, x, y);
-    ultraVirusBlock.makeUltra();
-    gameViruses.push(ultraVirusBlock)
-  }
-
-  for (let i = 0; i < gameViruses.length; i += 1) {
-    if (myPlayerPiece.isCollidingWith(gameViruses[i]) && gameViruses[i].ultra) {
+  myGameViruses.increaseFrameNo()
+  myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
+  for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
+    if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
       console.log('Game Over')
     }
-    gameViruses[i].drop(3);
-    gameViruses[i].render(myGameArea);
+    myGameViruses.viruses[i].drop(3);
+    myGameViruses.viruses[i].render(myGameArea);
   }
 
 }

@@ -1,12 +1,8 @@
-function virusBlock(image, x, y) {
+function virusBlock(image, x, y, ultraBoolean) {
   this.image = image;
   this.x = x;
   this.y = y;
-  this.ultra = false;
-
-  this.makeUltra = () => {
-    this.ultra = true;
-  }
+  this.ultra = ultraBoolean;
 
   this.drop = (distance) => {
     this.y += distance
