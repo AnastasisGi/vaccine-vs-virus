@@ -1,8 +1,10 @@
 import { playerPiece } from './playerPiece.js';
 import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
+import { score } from './score.js';
 
-let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage;
+
+let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, myScore;
 let distance = 4;
 
 window.addEventListener('load', () => {
@@ -17,11 +19,14 @@ window.addEventListener('load', () => {
 
   button.addEventListener('click', () => {
     element.innerHTML = ""
-
+    let canvasContainer = document.createElement("div")
+    let scoreContainer = document.createElement("div")
+    element.appendChild(scoreContainer);
+    element.appendChild(canvasContainer);
     let canvas = document.createElement("canvas")
-    document.body.insertBefore(canvas, document.body.childNodes[0]);
+    canvasContainer.appendChild(canvas);
     myGameArea = new gameArea(480, 800, canvas)
-
+    myScore = new score(scoreContainer);
     let desiredImageWidth = 25;
     let scaleBy = desiredImageWidth / syringeImage.width;
     let desiredImageHeight = (syringeImage.height * scaleBy) - 10;
