@@ -73,7 +73,7 @@ function updateGameArea() {
     x = getRandomInt(480 - virusImage.width);
     y = 10;
     gameViruses.push(new virusBlock(virusImage, x, 10));
-  } else if (everyinterval(500)) {
+  } else if (everyinterval(250)) {
     x = getRandomInt(480 - ultraVirusImage.width);
     y = 10;
     let ultraVirusBlock = new virusBlock(ultraVirusImage, x, y);
@@ -82,7 +82,7 @@ function updateGameArea() {
   }
 
   for (let i = 0; i < gameViruses.length; i += 1) {
-    if (myPlayerPiece.isCollidingWith(gameViruses[i]) === true) {
+    if (myPlayerPiece.isCollidingWith(gameViruses[i]) && gameViruses[i].ultra) {
       console.log('Game Over')
     }
     gameViruses[i].drop(3);
