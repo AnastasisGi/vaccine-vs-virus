@@ -54,17 +54,21 @@ function updateGameArea() {
     return false;
   }
 
+  function getRandomInt(max) {
+    return Math.floor(Math.random() * Math.floor(max));
+  }
+
   let x, y;
   myGameArea.frameNo += 1;
 
   if (myGameArea.frameNo == 1 || everyinterval(300)) {
-    x = 300;
+    x = getRandomInt(480 - virusImage.width);
     y = 10;
-    gameViruses.push(new virusBlock(virusImage, 300, 10));
+    gameViruses.push(new virusBlock(virusImage, x, 10));
   } else if (everyinterval(200)) {
-    x = 50;
+    x = getRandomInt(480 - virusImage.width);
     y = 10;
-    gameViruses.push(new virusBlock(virusImage, 50, 10));
+    gameViruses.push(new virusBlock(virusImage, x, 10));
   }
 
   for (let i = 0; i < gameViruses.length; i += 1) {
