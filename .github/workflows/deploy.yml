@@ -1,0 +1,32 @@
+name: Heroku Deployment
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    name: jest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v1
+      - name: Run Tests
+        run: |
+          npm install 
+          npm test
+  
+  build:
+    needs: jest
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: akhileshns/heroku-deploy@v3.10.9
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: "vaccine-vs-virus"
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          healthcheck: "https://vaccine-vs-virus.herokuapp.com/health"
+          checkstring: "ok"
+          delay: 5
+          rollbackonhealthcheckfailed: true
