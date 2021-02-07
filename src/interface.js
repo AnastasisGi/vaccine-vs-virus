@@ -3,7 +3,7 @@ import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
 
 let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage;
-let distance = 4;
+let gameViruses = [];
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
@@ -48,26 +48,44 @@ window.addEventListener('load', () => {
 function updateGameArea() {
   myGameArea.clearCanvas()
   myPlayerPiece.render(myGameArea)
-  myVirusBlock.render(myGameArea)
-  myVirusBlock.drop(distance);
+
+  function everyinterval(n) {
+    if ((myGameArea.frameNo % n) === 0) { return true; }
+    return false;
+  }
+
+  let x, y;
+  myGameArea.frameNo += 1;
+
+  if (myGameArea.frameNo == 1 || everyinterval(300)) {
+    x = 300;
+    y = 10;
+    gameViruses.push(new virusBlock(virusImage, 300, 10));
+  } else if (everyinterval(200)) {
+    x = 50;
+    y = 10;
+    gameViruses.push(new virusBlock(virusImage, 50, 10));
+  }
+
+  for (let i = 0; i < gameViruses.length; i += 1) {
+    gameViruses[i].y += 1;
+    gameViruses[i].render(myGameArea);
+  }
 
 }
 
-
-
-
-  function crashWith(virusBlock) {
-    var myleft = playerPiece.x;
-    var myright = playerPiece.x + (playerPiece.width);
-    var mytop = playerPiece.y;
-    var mybottom = playerPiece.y + (playerPiece.height);
-    var otherleft = virusBlock.x;
-    var otherright = virusBlock.x + (virusBlock.width);
-    var othertop = virusBlock.y;
-    var otherbottom = virusBlock.y + (virusBlock.height);
-    var crash = true;
-    if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-        crash = false;
-    }
-    return crash;
+function crashWith(virusBlock) {
+  var myleft = playerPiece.x;
+  var myright = playerPiece.x + (playerPiece.width);
+  var mytop = playerPiece.y;
+  var mybottom = playerPiece.y + (playerPiece.height);
+  var otherleft = virusBlock.x;
+  var otherright = virusBlock.x + (virusBlock.width);
+  var othertop = virusBlock.y;
+  var otherbottom = virusBlock.y + (virusBlock.height);
+  var crash = true;
+  if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
+    crash = false;
+  }
+  return crash;
 }
