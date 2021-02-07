@@ -78,28 +78,15 @@ function updateGameArea() {
     y = 10;
     let ultraVirusBlock = new virusBlock(ultraVirusImage, x, y);
     ultraVirusBlock.makeUltra();
-    gameViruses.push(ultraVirusBlock);
+    gameViruses.push(ultraVirusBlock)
   }
 
   for (let i = 0; i < gameViruses.length; i += 1) {
-    gameViruses[i].drop(5);
+    if (myPlayerPiece.isCollidingWith(gameViruses[i]) === true) {
+      console.log('Game Over')
+    }
+    gameViruses[i].drop(3);
     gameViruses[i].render(myGameArea);
   }
 
-}
-
-function crashWith(virusBlock) {
-  var myleft = playerPiece.x;
-  var myright = playerPiece.x + (playerPiece.width);
-  var mytop = playerPiece.y;
-  var mybottom = playerPiece.y + (playerPiece.height);
-  var otherleft = virusBlock.x;
-  var otherright = virusBlock.x + (virusBlock.width);
-  var othertop = virusBlock.y;
-  var otherbottom = virusBlock.y + (virusBlock.height);
-  var crash = true;
-  if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-    crash = false;
-  }
-  return crash;
 }
