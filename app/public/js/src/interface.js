@@ -7,9 +7,9 @@ let distance = 4;
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
-  syringeImage.src = "../assets/syringe.png";
+  syringeImage.src = "../../images/syringe.png";
   virusImage = new Image();
-  virusImage.src = "../assets/virus2.png";
+  virusImage.src = "../../images/virus2.png";
 
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
