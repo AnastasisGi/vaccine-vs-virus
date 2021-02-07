@@ -3,6 +3,7 @@ import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
 
 let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage;
+let distance = 4;
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
@@ -48,6 +49,8 @@ function updateGameArea() {
   myGameArea.clearCanvas()
   myPlayerPiece.render(myGameArea)
   myVirusBlock.render(myGameArea)
+  myVirusBlock.drop(distance);
+
 }
 
 
