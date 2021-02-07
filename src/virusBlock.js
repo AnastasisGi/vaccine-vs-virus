@@ -3,6 +3,7 @@ function virusBlock(image, x, y) {
   this.x = x;
   this.y = y;
 
+
   this.drop = (distance) => {
     this.y += distance
   }
