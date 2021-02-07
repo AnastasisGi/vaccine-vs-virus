@@ -69,3 +69,62 @@ describe('it renders on the canvas', () => {
     expect(mockGameArea.drawImage).toHaveBeenCalled()
   })
 })
+
+
+describe('Player piece crashing with virus block',()=>{
+  let mockVirus;
+  
+
+  beforeEach(() => {
+    testPlayerPiece.setStartPosition(mockGameArea);
+  })
+
+  describe('virus is at the same height as syringe', () => {
+    beforeEach(() => {
+      mockVirus = {
+        x: 198,
+        y: 598,
+        width: 4,
+        height: 4
+      }  
+    })
+
+    test('It returns false when player piece is too far left',()=>{
+      testPlayerPiece.moveLeft(50)
+      expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
+    })
+  
+    test('It returns false when player piece is too far right',()=>{
+      testPlayerPiece.moveRight(50)
+      expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
+    })
+
+    test('It returns true when player piece is in x-alignment', () => {
+      expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(true)
+    })
+  })
+
+  describe('virus is at the same x alignment as syringe', () => {
+    test('It returns false when player piece is too far below',()=>{
+      mockVirus = {
+        x: 198,
+        y: 0,
+        width: 4,
+        height: 4
+      }  
+
+      expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
+    })
+
+    test('It returns false when player piece is too far above',()=>{
+      mockVirus = {
+        x: 198,
+        y: 605,
+        width: 4,
+        height: 4
+      }  
+      
+      expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
+    })
+  })
+})

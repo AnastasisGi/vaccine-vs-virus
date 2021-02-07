@@ -26,6 +26,28 @@ function playerPiece(image) {
     }
   }
 
+  this.isCollidingWith = function (virusBlock){
+    // syringe is too far left for collision
+    if (this.collisionPoint() < virusBlock.x) {
+      return false
+    // syringe is too far right for collision
+    } else if (this.collisionPoint() > virusBlock.x + virusBlock.width) {
+      return false
+    // syringe is too far down for collision
+    } else if (this.y > virusBlock.y + virusBlock.height) {
+      return false
+    // syringe is too far up for collision
+    } else if (this.y < virusBlock.y) {
+      return false
+    } else {
+      return true
+    }
+  }
+
+  this.collisionPoint = () => {
+    return this.x + (this.image.width / 2)
+  }
+
   this.render = (gameArea) => {
     gameArea.drawImage(this.image, this.x, this.y)
   }
