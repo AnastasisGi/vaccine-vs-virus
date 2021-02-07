@@ -29,4 +29,11 @@ describe('virus block', () => {
       expect(mockGameArea.drawImage).toHaveBeenCalledWith(mockImage, startx, starty)
     })
   })
+
+  describe('creating an ultra virus block', () => {
+    test('it changes the virus to ultra', () => {
+      testVirusBlock.makeUltra();
+      expect(testVirusBlock.ultra).toEqual(true);
+    });
+  });
 })

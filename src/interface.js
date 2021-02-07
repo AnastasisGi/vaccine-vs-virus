@@ -2,7 +2,7 @@ import { playerPiece } from './playerPiece.js';
 import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
 
-let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage;
+let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage;
 let gameViruses = [];
 
 window.addEventListener('load', () => {
@@ -10,6 +10,8 @@ window.addEventListener('load', () => {
   syringeImage.src = "../assets/syringe.png";
   virusImage = new Image();
   virusImage.src = "../assets/virus2.png";
+  ultraVirusImage = new Image();
+  ultraVirusImage.src = "../assets/virus.png";
 
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
@@ -29,6 +31,8 @@ window.addEventListener('load', () => {
     syringeImage.width = desiredImageWidth;
     virusImage.height = 100;
     virusImage.width = 100;
+    ultraVirusImage.height = 100;
+    ultraVirusImage.width = 100;
 
     myPlayerPiece = new playerPiece(syringeImage)
     myPlayerPiece.setStartPosition(myGameArea)
@@ -69,10 +73,16 @@ function updateGameArea() {
     x = getRandomInt(480 - virusImage.width);
     y = 10;
     gameViruses.push(new virusBlock(virusImage, x, 10));
+  } else if (everyinterval(500)) {
+    x = getRandomInt(480 - ultraVirusImage.width);
+    y = 10;
+    let ultraVirusBlock = new virusBlock(ultraVirusImage, x, y);
+    ultraVirusBlock.makeUltra();
+    gameViruses.push(ultraVirusBlock);
   }
 
   for (let i = 0; i < gameViruses.length; i += 1) {
-    gameViruses[i].y += 1;
+    gameViruses[i].drop(5);
     gameViruses[i].render(myGameArea);
   }
 
