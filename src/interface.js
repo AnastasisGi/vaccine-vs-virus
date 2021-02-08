@@ -1,17 +1,18 @@
 import { playerPiece } from './playerPiece.js';
 import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
+import { gameViruses } from './gameViruses.js';
 import { score } from './score.js';
 
-
-let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, myScore;
-let distance = 4;
+let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore;
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
   syringeImage.src = "../assets/syringe.png";
   virusImage = new Image();
   virusImage.src = "../assets/virus2.png";
+  ultraVirusImage = new Image();
+  ultraVirusImage.src = "../assets/virus.png";
 
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
@@ -34,10 +35,14 @@ window.addEventListener('load', () => {
     syringeImage.width = desiredImageWidth;
     virusImage.height = 100;
     virusImage.width = 100;
+    ultraVirusImage.height = 100;
+    ultraVirusImage.width = 100;
 
     myPlayerPiece = new playerPiece(syringeImage)
     myPlayerPiece.setStartPosition(myGameArea)
     myVirusBlock = new virusBlock(virusImage, 50, 50)
+    myGameViruses = new gameViruses(virusBlock, 200, 300)
+
 
     window.addEventListener('keydown', (event) => {
       if (event.keyCode === 39) {
@@ -53,26 +58,14 @@ window.addEventListener('load', () => {
 function updateGameArea() {
   myGameArea.clearCanvas()
   myPlayerPiece.render(myGameArea)
-  myVirusBlock.render(myGameArea)
-  myVirusBlock.drop(distance);
-
-}
-
-
-
-
-  function crashWith(virusBlock) {
-    var myleft = playerPiece.x;
-    var myright = playerPiece.x + (playerPiece.width);
-    var mytop = playerPiece.y;
-    var mybottom = playerPiece.y + (playerPiece.height);
-    var otherleft = virusBlock.x;
-    var otherright = virusBlock.x + (virusBlock.width);
-    var othertop = virusBlock.y;
-    var otherbottom = virusBlock.y + (virusBlock.height);
-    var crash = true;
-    if ((mybottom < othertop) || (mytop > otherbottom) || (myright < otherleft) || (myleft > otherright)) {
-        crash = false;
+  myGameViruses.increaseFrameNo()
+  myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
+  for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
+    if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
+      console.log('Game Over')
     }
-    return crash;
+    myGameViruses.viruses[i].drop(3);
+    myGameViruses.viruses[i].render(myGameArea);
+  }
+
 }

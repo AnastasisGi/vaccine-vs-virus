@@ -4,7 +4,6 @@ function gameArea(width, height, canvas) {
   this.canvas.height = height;
   this.canvas.style = "border: 2px solid";
   this.context = this.canvas.getContext('2d');
-  this.frame =0;
 
   
   this.clearCanvas = () => {
