@@ -63,7 +63,6 @@ function updateGameArea() {
   for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
     if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
 
-
       gameover();
     }
     myGameViruses.viruses[i].drop(3);
@@ -74,5 +73,6 @@ function updateGameArea() {
 
 function gameover () {
   console.log('GAME OVER');
-  element.innerHTML = 'Game over'
+  element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
+
 }
