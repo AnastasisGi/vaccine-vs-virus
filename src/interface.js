@@ -3,7 +3,7 @@ import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
 import { gameViruses } from './gameViruses.js';
 import { score } from './score.js';
-
+let element;
 let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore;
 
 window.addEventListener('load', () => {
@@ -14,7 +14,7 @@ window.addEventListener('load', () => {
   ultraVirusImage = new Image();
   ultraVirusImage.src = "../assets/virus.png";
 
-  let element = document.getElementById('app')
+  element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
   let button = document.getElementById('start-game')
 
@@ -62,10 +62,17 @@ function updateGameArea() {
   myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
   for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
     if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
-      console.log('Game Over')
+
+
+      gameover();
     }
     myGameViruses.viruses[i].drop(3);
     myGameViruses.viruses[i].render(myGameArea);
   }
 
+}
+
+function gameover () {
+  console.log('GAME OVER');
+  element.innerHTML = 'Game over'
 }
