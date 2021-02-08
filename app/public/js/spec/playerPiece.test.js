@@ -71,7 +71,7 @@ describe('it renders on the canvas', () => {
 })
 
 
-describe('Player piece crashing with virus block',()=>{
+describe('Player piece crashing with virus block', () => {
   let mockVirus;
 
 
@@ -84,17 +84,19 @@ describe('Player piece crashing with virus block',()=>{
       mockVirus = {
         x: 198,
         y: 598,
-        width: 4,
-        height: 4
+        image: {
+          width: 4,
+          height: 4
+        }
       }
     })
 
-    test('It returns false when player piece is too far left',()=>{
+    test('It returns false when player piece is too far left', () => {
       testPlayerPiece.moveLeft(50)
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
     })
 
-    test('It returns false when player piece is too far right',()=>{
+    test('It returns false when player piece is too far right', () => {
       testPlayerPiece.moveRight(50)
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
     })
@@ -105,7 +107,7 @@ describe('Player piece crashing with virus block',()=>{
   })
 
   describe('virus is at the same x alignment as syringe', () => {
-    test('It returns false when player piece is too far below',()=>{
+    test('It returns false when player piece is too far below', () => {
       mockVirus = {
         x: 198,
         y: 0,
@@ -118,7 +120,7 @@ describe('Player piece crashing with virus block',()=>{
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
     })
 
-    test('It returns false when player piece is too far above',()=>{
+    test('It returns false when player piece is too far above', () => {
       mockVirus = {
         x: 198,
         y: 605,

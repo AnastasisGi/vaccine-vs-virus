@@ -8,11 +8,11 @@ let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraViru
 
 window.addEventListener('load', () => {
   syringeImage = new Image();
-  syringeImage.src = "../assets/syringe.png";
+  syringeImage.src = "../../images/syringe.png";
   virusImage = new Image();
-  virusImage.src = "../assets/virus2.png";
+  virusImage.src = "../../images/virus2.png";
   ultraVirusImage = new Image();
-  ultraVirusImage.src = "../assets/virus.png";
+  ultraVirusImage.src = "../../images/virus.png";
 
   let element = document.getElementById('app')
   element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
