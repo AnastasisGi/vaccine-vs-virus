@@ -73,7 +73,7 @@ describe('it renders on the canvas', () => {
 
 describe('Player piece crashing with virus block',()=>{
   let mockVirus;
-  
+
 
   beforeEach(() => {
     testPlayerPiece.setStartPosition(mockGameArea);
@@ -86,14 +86,14 @@ describe('Player piece crashing with virus block',()=>{
         y: 598,
         width: 4,
         height: 4
-      }  
+      }
     })
 
     test('It returns false when player piece is too far left',()=>{
       testPlayerPiece.moveLeft(50)
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
     })
-  
+
     test('It returns false when player piece is too far right',()=>{
       testPlayerPiece.moveRight(50)
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
@@ -109,9 +109,11 @@ describe('Player piece crashing with virus block',()=>{
       mockVirus = {
         x: 198,
         y: 0,
-        width: 4,
-        height: 4
-      }  
+        image: {
+          width: 4,
+          height: 4
+        }
+      }
 
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
     })
@@ -120,10 +122,12 @@ describe('Player piece crashing with virus block',()=>{
       mockVirus = {
         x: 198,
         y: 605,
-        width: 4,
-        height: 4
-      }  
-      
+        image: {
+          width: 4,
+          height: 4
+        }
+      }
+
       expect(testPlayerPiece.isCollidingWith(mockVirus)).toEqual(false)
     })
   })

@@ -26,17 +26,17 @@ function playerPiece(image) {
     }
   }
 
-  this.isCollidingWith = function (virusBlock){
+  this.isCollidingWith = function (virusBlock) {
     // syringe is too far left for collision
     if (this.collisionPoint() < virusBlock.x) {
       return false
-    // syringe is too far right for collision
-    } else if (this.collisionPoint() > virusBlock.x + virusBlock.width) {
+      // syringe is too far right for collision
+    } else if (this.collisionPoint() > virusBlock.x + virusBlock.image.width) {
       return false
-    // syringe is too far down for collision
-    } else if (this.y > virusBlock.y + virusBlock.height) {
+      // syringe is too far down for collision
+    } else if (this.y > virusBlock.y + virusBlock.image.height) {
       return false
-    // syringe is too far up for collision
+      // syringe is too far up for collision
     } else if (this.y < virusBlock.y) {
       return false
     } else {
