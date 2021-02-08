@@ -4,6 +4,7 @@ function virusBlock(image, x, y, ultraBoolean) {
   this.y = y;
   this.ultra = ultraBoolean;
 
+
   this.drop = (distance) => {
     this.y += distance
   }
