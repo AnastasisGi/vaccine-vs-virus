@@ -16,14 +16,12 @@ window.addEventListener('load', () => {
   ultraVirusImage = new Image();
   ultraVirusImage.src = "../../images/virus.png";
   location.hash = 'index'
-  window.addEventListener('hashchange', ()=>{
+  window.addEventListener('hashchange', () => {
     if (location.hash === '#index') {
-
-
       element = document.getElementById('app')
       element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
       let button = document.getElementById('start-game')
-      button.addEventListener('click',()=>{
+      button.addEventListener('click', () => {
         location.hash = 'play'
       })
     } else if (location.hash === '#play') {
@@ -50,7 +48,6 @@ window.addEventListener('load', () => {
       myVirusBlock = new virusBlock(virusImage, 50, 50)
       myGameViruses = new gameViruses(virusBlock, 200, 300)
 
-
       window.addEventListener('keydown', (event) => {
         if (event.keyCode === 39) {
           myPlayerPiece.moveRight(10);
@@ -59,27 +56,38 @@ window.addEventListener('load', () => {
         }
       });
       myGameArea.updateDisplay(updateGameArea, 20)
+
+    } else if (location.hash === '#game-over') {
+      element = document.getElementById('app')
+      element.innerHTML = `<p>Game Over! Play again?</p>
+      <button id="restart-game" type="button" name="restart-game">Restart game</button>`
+      let button = document.getElementById('restart-game')
+      button.addEventListener('click', () => {
+        location.hash = 'play'
+      })
     }
-  })
 
   })
 
-function updateGameArea() {
-  myGameArea.clearCanvas()
-  myPlayerPiece.render(myGameArea)
-  myGameViruses.increaseFrameNo()
-  myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
-  for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
-    if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
-      console.log('Game Over')
-      gameover();
+  function updateGameArea() {
+    myGameArea.clearCanvas()
+    myPlayerPiece.render(myGameArea)
+    myGameViruses.increaseFrameNo()
+    myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
+    for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
+      if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
+        console.log('Game Over')
+        gameover();
+      }
+      myGameViruses.viruses[i].drop(3);
+      myGameViruses.viruses[i].render(myGameArea);
     }
-    myGameViruses.viruses[i].drop(3);
-    myGameViruses.viruses[i].render(myGameArea);
+
   }
 
-}
+  function gameover() {
+    // location.hash = 'index'
+    location.hash = 'game-over'
+  }
 
-function gameover(){
-  location.hash = 'index'
-}
+})
