@@ -4,7 +4,7 @@ import { virusBlock } from './virusBlock.js';
 import { gameViruses } from './gameViruses.js';
 import { score } from './score.js';
 let element;
-let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore;
+let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore, myIntervalId;
 
 
 
@@ -58,7 +58,7 @@ window.addEventListener('load', () => {
           myPlayerPiece.moveLeft(10);
         }
       });
-      myGameArea.updateDisplay(updateGameArea, 20)
+      myIntervalId = myGameArea.updateDisplay(updateGameArea, 20)
     }
   })
 
@@ -71,15 +71,19 @@ function updateGameArea() {
   myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
   for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
     if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
-      console.log('Game Over')
-      gameover();
+      gameOver();
+    } else if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && !myGameViruses.viruses[i].ultra) {
+      myGameViruses.viruses.splice(i, 1)
+      myScore.increaseScore(1)
+    } else {
+      myGameViruses.viruses[i].drop(3);
+      myGameViruses.viruses[i].render(myGameArea);
     }
-    myGameViruses.viruses[i].drop(3);
-    myGameViruses.viruses[i].render(myGameArea);
   }
 
 }
 
-function gameover(){
+function gameOver(){
   location.hash = 'index'
+  clearInterval(myIntervalId)
 }
