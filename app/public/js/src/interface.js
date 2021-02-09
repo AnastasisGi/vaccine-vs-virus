@@ -4,6 +4,8 @@ import { virusBlock } from './virusBlock.js';
 import { gameViruses } from './gameViruses.js';
 import { score } from './score.js';
 import { play } from './play.js';
+import { scaleImage } from '../src/scaleImage.js';
+
 let element;
 let myGameArea, myPlayerPiece, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore, myIntervalId;
 
@@ -48,19 +50,15 @@ window.addEventListener('load', () => {
       canvasContainer.appendChild(canvas);
 
       // scaling - make a helper function for this
-      myGameArea = new gameArea(480, 800, canvas)  // scale to screen window.innerwidth or window.innerheight, probably wants to be abt 1:1.5 width/height
-      myScore = new score(scoreContainer);
-      let desiredImageWidth = 25;  // 0.05 * canvas width
-      let scaleBy = desiredImageWidth / syringeImage.width;
-      let desiredImageHeight = (syringeImage.height * scaleBy) - 10;
-      syringeImage.height = desiredImageHeight;
-      syringeImage.width = desiredImageWidth;
-      virusImage.height = 100; // 0.2 * canvas width
-      virusImage.width = 100;
-      ultraVirusImage.height = 100;
-      ultraVirusImage.width = 100;
+      let canvasWidth = 480 // scale to screen window.innerwidth or window.innerheight, probably wants to be abt 1:1.5 width/height
+      let canvasHeight = canvasWidth * 1.75
+      syringeImage = scaleImage(syringeImage, canvasWidth, 0.05);
+      virusImage = scaleImage(virusImage, canvasWidth, 0.2);
+      ultraVirusImage = scaleImage(ultraVirusImage, canvasWidth, 0.2);
 
       // create components
+      myGameArea = new gameArea(canvasWidth, canvasHeight, canvas)  
+      myScore = new score(scoreContainer);
       myPlayerPiece = new playerPiece(syringeImage)
       myPlayerPiece.setStartPosition(myGameArea) // this probably moves into game.start()
       myGameViruses = new gameViruses(virusBlock, 200, 300)
