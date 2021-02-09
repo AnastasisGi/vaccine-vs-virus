@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css2?family=Flavors&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -31,3 +34,32 @@ body {
   text-align:center;
 }
 
+canvas {
+  background-color: #D6E2E6;
+  border-style: solid;
+  border-color: #213036;
+  border-width: 7px;
+}
+
+h1 {
+  color: #182024;
+  font-family: 'Flavors', cursive;
+  font-size: 100px;
+  margin: 8%;
+}
+
+button {
+  box-shadow: inset 0px 0px 13px 10px #92B3C9;
+  border-radius: 10px;
+  border: 1px #92B3C9;
+  color: #213036;
+  padding: 10px 32px;
+  background-color: #DA8059;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Cute Font';
+  font-size: 30px;
+  cursor: pointer;
+  margin: 3%;
+}

@@ -7,7 +7,6 @@ let element;
 let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore;
 
 
-
 window.addEventListener('load', () => {
   syringeImage = new Image();
   syringeImage.src = "../../images/syringe.png";
@@ -19,7 +18,8 @@ window.addEventListener('load', () => {
   window.addEventListener('hashchange', () => {
     if (location.hash === '#index') {
       element = document.getElementById('app')
-      element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
+      element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>
+      <p><button id="instructions" type="button name="instructions>Instructions</button></p>`
       let button = document.getElementById('start-game')
       button.addEventListener('click', () => {
         location.hash = 'play'
@@ -86,7 +86,6 @@ window.addEventListener('load', () => {
   }
 
   function gameover() {
-    // location.hash = 'index'
     location.hash = 'game-over'
   }
 
