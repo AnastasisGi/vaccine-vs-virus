@@ -37,6 +37,7 @@ window.addEventListener('load', () => {
 
     } else if (location.hash === '#play') {
       //clear the button, set up the nodes for the game - make a helper function for this?
+      document.getElementById("heading").className = 'side-heading'
       element.innerHTML = ""
       let canvasContainer = document.createElement("div")
       let scoreContainer = document.createElement("div")

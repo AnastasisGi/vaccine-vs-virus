@@ -29,9 +29,8 @@ footer, header, hgroup, menu, nav, section {
 
 body {
   background-color: #92B3C9;
-  margin:50px 0; 
-  padding:0;
-  text-align:center;
+  padding: 0;
+  text-align: center;
 }
 
 canvas {
@@ -46,6 +45,12 @@ h1 {
   font-family: 'Flavors', cursive;
   font-size: 130px;
   margin: 8%;
+}
+
+.side-heading {
+  font-size: 40px;
+  text-align: left;
+  margin: 1%;
 }
 
 p {
