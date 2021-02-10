@@ -44,7 +44,7 @@ canvas {
 h1 {
   color: #182024;
   font-family: 'Flavors', cursive;
-  font-size: 100px;
+  font-size: 130px;
   margin: 8%;
 }
 
@@ -68,5 +68,5 @@ button {
   font-family: 'Cute Font';
   font-size: 30px;
   cursor: pointer;
-  margin: 3%;
+  margin: 1%;
 }
