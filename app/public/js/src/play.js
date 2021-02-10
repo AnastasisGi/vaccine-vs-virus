@@ -1,5 +1,5 @@
 function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ultraVirusImage) {
-  
+
   let gameLoop = () => {
     myGameArea.clearCanvas()
     myPlayerPiece.render(myGameArea)
@@ -18,7 +18,7 @@ function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ult
       }
     }
   }
-  
+
   window.addEventListener('keydown', (event) => {
     if (event.keyCode === 39) {
       myPlayerPiece.moveRight(10);
@@ -27,8 +27,8 @@ function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ult
     }
   });
 
-  let myIntervalId = setInterval(gameLoop, 20)
-  
+  let myIntervalId = setInterval(gameLoop, 15)
+
 }
 
 export { play };

@@ -28,8 +28,7 @@ window.addEventListener('load', () => {
   window.addEventListener('hashchange', () => {
     if (location.hash === '#index') {
       element = document.getElementById('app')
-      element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>
-      <p><button id="instructions" type="button name="instructions>Instructions</button></p>`
+      element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
       let button = document.getElementById('start-game')
       button.addEventListener('click', () => {
         location.hash = 'play'
@@ -59,7 +58,7 @@ window.addEventListener('load', () => {
       myScore = new score(scoreContainer);
       myPlayerPiece = new playerPiece(syringeImage)
       myPlayerPiece.setStartPosition(myGameArea) // this probably moves into game.start()
-      myGameViruses = new gameViruses(virusBlock, 200, 300)
+      myGameViruses = new gameViruses(virusBlock, 99, 249)
 
       play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ultraVirusImage);
 
