@@ -15,9 +15,8 @@ let myGameArea, myPlayerPiece, syringeImage, virusImage, ultraVirusImage, myGame
 // create game elements
 // play(gameArea, playerPiece, gameViruses, score)
 
-
 window.addEventListener('load', () => {
-  
+
   //loading the images - make a helper function for this
   syringeImage = new Image();
   syringeImage.src = "../../images/syringe.png";
@@ -26,24 +25,22 @@ window.addEventListener('load', () => {
   ultraVirusImage = new Image();
   ultraVirusImage.src = "../../images/virus.png";
   location.hash = 'index'
-
-  // starting the game
   window.addEventListener('hashchange', () => {
     if (location.hash === '#index') {
-
-      // Set up start button
       element = document.getElementById('app')
       element.innerHTML = `<button id="start-game" type="button" name="start-game">Start game</button>`
       let button = document.getElementById('start-game')
-      button.addEventListener('click',() => {
+      button.addEventListener('click', () => {
         location.hash = 'play'
       })
 
     } else if (location.hash === '#play') {
       //clear the button, set up the nodes for the game - make a helper function for this?
+      document.getElementById("heading").className = 'side-heading'
       element.innerHTML = ""
       let canvasContainer = document.createElement("div")
       let scoreContainer = document.createElement("div")
+      scoreContainer.id = "score-container"
       let canvas = document.createElement("canvas")
       element.appendChild(scoreContainer);
       element.appendChild(canvasContainer);
@@ -51,20 +48,29 @@ window.addEventListener('load', () => {
 
       // scaling - make a helper function for this
       let canvasWidth = 480 // scale to screen window.innerwidth or window.innerheight, probably wants to be abt 1:1.5 width/height
-      let canvasHeight = canvasWidth * 1.75
+      let canvasHeight = canvasWidth * 1.5
       syringeImage = scaleImage(syringeImage, canvasWidth, 0.05);
       virusImage = scaleImage(virusImage, canvasWidth, 0.2);
       ultraVirusImage = scaleImage(ultraVirusImage, canvasWidth, 0.2);
 
       // create components
-      myGameArea = new gameArea(canvasWidth, canvasHeight, canvas)  
+      myGameArea = new gameArea(canvasWidth, canvasHeight, canvas)
       myScore = new score(scoreContainer);
       myPlayerPiece = new playerPiece(syringeImage)
       myPlayerPiece.setStartPosition(myGameArea) // this probably moves into game.start()
-      myGameViruses = new gameViruses(virusBlock, 200, 300)
+      myGameViruses = new gameViruses(virusBlock, 99, 249)
 
       play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ultraVirusImage);
+
+    } else if (location.hash === '#game-over') {
+      element = document.getElementById('app')
+      element.innerHTML = `<h1 class="game-over-heading">Game Over!</h1><p>You destroyed ${myScore.score} viruses!</p>
+      <button id="restart-game" type="button" name="restart-game">Play again</button>`
+      let button = document.getElementById('restart-game')
+      button.addEventListener('click', () => {
+        location.hash = 'play'
+      })
     }
-  })
 
   })
+})
