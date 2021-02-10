@@ -53,6 +53,11 @@ h1 {
   margin: 1%;
 }
 
+.game-over-heading {
+  margin-top: 8%;
+  margin-bottom: 4%;
+}
+
 #score-container {
   float: left;
   width: 35%;

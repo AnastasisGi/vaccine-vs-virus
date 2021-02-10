@@ -65,8 +65,8 @@ window.addEventListener('load', () => {
 
     } else if (location.hash === '#game-over') {
       element = document.getElementById('app')
-      element.innerHTML = `<p>Game Over! Play again?</p>
-      <button id="restart-game" type="button" name="restart-game">Restart game</button>`
+      element.innerHTML = `<h1 class="game-over-heading">Game Over!</h1><p>You destroyed ${myScore.score} viruses!</p>
+      <button id="restart-game" type="button" name="restart-game">Play again</button>`
       let button = document.getElementById('restart-game')
       button.addEventListener('click', () => {
         location.hash = 'play'
