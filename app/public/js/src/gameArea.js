@@ -10,7 +10,7 @@ function gameArea(width, height, canvas) {
   }
 
   this.updateDisplay = (updateGameArea, time) => {
-    setInterval(updateGameArea, time);
+    return setInterval(updateGameArea, time);
   }
 
   this.drawImage = (image, x, y) => {

@@ -3,11 +3,21 @@ import { gameArea } from './gameArea.js';
 import { virusBlock } from './virusBlock.js';
 import { gameViruses } from './gameViruses.js';
 import { score } from './score.js';
-let element;
-let myGameArea, myPlayerPiece, myVirusBlock, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore;
+import { play } from './play.js';
+import { scaleImage } from '../src/scaleImage.js';
 
+let element;
+let myGameArea, myPlayerPiece, syringeImage, virusImage, ultraVirusImage, myGameViruses, myScore, myIntervalId;
+
+// Loads images
+// Sort out any HTML elements
+// event listeners for button clicks
+// create game elements
+// play(gameArea, playerPiece, gameViruses, score)
 
 window.addEventListener('load', () => {
+
+  //loading the images - make a helper function for this
   syringeImage = new Image();
   syringeImage.src = "../../images/syringe.png";
   virusImage = new Image();
@@ -24,38 +34,32 @@ window.addEventListener('load', () => {
       button.addEventListener('click', () => {
         location.hash = 'play'
       })
+
     } else if (location.hash === '#play') {
+      //clear the button, set up the nodes for the game - make a helper function for this?
       element.innerHTML = ""
       let canvasContainer = document.createElement("div")
       let scoreContainer = document.createElement("div")
+      let canvas = document.createElement("canvas")
       element.appendChild(scoreContainer);
       element.appendChild(canvasContainer);
-      let canvas = document.createElement("canvas")
       canvasContainer.appendChild(canvas);
-      myGameArea = new gameArea(480, 800, canvas)
+
+      // scaling - make a helper function for this
+      let canvasWidth = 480 // scale to screen window.innerwidth or window.innerheight, probably wants to be abt 1:1.5 width/height
+      let canvasHeight = canvasWidth * 1.75
+      syringeImage = scaleImage(syringeImage, canvasWidth, 0.05);
+      virusImage = scaleImage(virusImage, canvasWidth, 0.2);
+      ultraVirusImage = scaleImage(ultraVirusImage, canvasWidth, 0.2);
+
+      // create components
+      myGameArea = new gameArea(canvasWidth, canvasHeight, canvas)
       myScore = new score(scoreContainer);
-      let desiredImageWidth = 25;
-      let scaleBy = desiredImageWidth / syringeImage.width;
-      let desiredImageHeight = (syringeImage.height * scaleBy) - 10;
-      syringeImage.height = desiredImageHeight;
-      syringeImage.width = desiredImageWidth;
-      virusImage.height = 100;
-      virusImage.width = 100;
-      ultraVirusImage.height = 100;
-      ultraVirusImage.width = 100;
       myPlayerPiece = new playerPiece(syringeImage)
-      myPlayerPiece.setStartPosition(myGameArea)
-      myVirusBlock = new virusBlock(virusImage, 50, 50)
+      myPlayerPiece.setStartPosition(myGameArea) // this probably moves into game.start()
       myGameViruses = new gameViruses(virusBlock, 200, 300)
 
-      window.addEventListener('keydown', (event) => {
-        if (event.keyCode === 39) {
-          myPlayerPiece.moveRight(10);
-        } else if (event.keyCode === 37) {
-          myPlayerPiece.moveLeft(10);
-        }
-      });
-      myGameArea.updateDisplay(updateGameArea, 20)
+      play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ultraVirusImage);
 
     } else if (location.hash === '#game-over') {
       element = document.getElementById('app')
@@ -68,25 +72,4 @@ window.addEventListener('load', () => {
     }
 
   })
-
-  function updateGameArea() {
-    myGameArea.clearCanvas()
-    myPlayerPiece.render(myGameArea)
-    myGameViruses.increaseFrameNo()
-    myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
-    for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
-      if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
-        console.log('Game Over')
-        gameover();
-      }
-      myGameViruses.viruses[i].drop(3);
-      myGameViruses.viruses[i].render(myGameArea);
-    }
-
-  }
-
-  function gameover() {
-    location.hash = 'game-over'
-  }
-
 })
