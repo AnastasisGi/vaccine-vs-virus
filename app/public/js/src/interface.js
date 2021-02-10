@@ -2,9 +2,7 @@ import { createComponentsAndPlay } from './createComponentsAndPlay.js';
 import { syringeImage, virusImage, ultraVirusImage } from './Images.js'
 import { startGame } from './startGame.js'
 
-
-let element, scaledSyringeImage, scaledVirusImage, scaledUltraVirusImage;
-
+let element;
 
 window.addEventListener('load', () => {
   element = document.getElementById('app')
@@ -14,6 +12,11 @@ window.addEventListener('load', () => {
       startGame(element)
     } else if (location.hash === '#play') {
       createComponentsAndPlay(element, syringeImage, virusImage, ultraVirusImage);
+    } else if (location.hash === '#game-over') {
+      let button = document.getElementById('restart-game')
+      button.addEventListener('click', () => {
+        location.hash = 'play'
+      })
     }
   })
 })

@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Cute+Font&display=swap');
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  background-color: #92B3C9;
+  padding: 0;
+  text-align: center;
+  font-family: 'Cute Font', cursive;
+}
+
+canvas {
+  background-color: #D6E2E6;
+  border-style: solid;
+  border-color: #213036;
+  border-width: 7px;
+  float: left;
+}
+
+h1 {
+  color: #182024;
+  font-size: 130px;
+  margin: 8%;
+}
+
+.side-heading {
+  font-size: 40px;
+  text-align: left;
+  margin: 1%;
+}
+
+.game-over-heading {
+  margin-top: 8%;
+  margin-bottom: 4%;
+}
+
+#score-container {
+  float: left;
+  width: 35%;
+}
+
+#score {
+  float: right;
+}
+
+
+p {
+  color: #182024;
+  font-family: 'Cute Font', cursive;
+  font-size: 30px;
+  margin: 3%;
+}
+
+button {
+  box-shadow: inset 0px 0px 13px 10px #92B3C9;
+  border-radius: 10px;
+  border: 1px #92B3C9;
+  color: #213036;
+  padding: 10px 32px;
+  background-color: #DA8059;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-family: 'Cute Font';
+  font-size: 30px;
+  cursor: pointer;
+  margin: 1%;
+}
