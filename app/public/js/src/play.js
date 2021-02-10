@@ -7,7 +7,7 @@ function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ult
     myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
     for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
       if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
-        location.hash = 'index';
+        location.hash = 'game-over';
         clearInterval(myIntervalId);
       } else if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && !myGameViruses.viruses[i].ultra) {
         myGameViruses.viruses.splice(i, 1)

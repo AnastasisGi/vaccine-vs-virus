@@ -41,6 +41,7 @@ window.addEventListener('load', () => {
       element.innerHTML = ""
       let canvasContainer = document.createElement("div")
       let scoreContainer = document.createElement("div")
+      scoreContainer.id = "score-container"
       let canvas = document.createElement("canvas")
       element.appendChild(scoreContainer);
       element.appendChild(canvasContainer);
@@ -48,7 +49,7 @@ window.addEventListener('load', () => {
 
       // scaling - make a helper function for this
       let canvasWidth = 480 // scale to screen window.innerwidth or window.innerheight, probably wants to be abt 1:1.5 width/height
-      let canvasHeight = canvasWidth * 1.75
+      let canvasHeight = canvasWidth * 1.5
       syringeImage = scaleImage(syringeImage, canvasWidth, 0.05);
       virusImage = scaleImage(virusImage, canvasWidth, 0.2);
       ultraVirusImage = scaleImage(ultraVirusImage, canvasWidth, 0.2);
