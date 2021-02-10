@@ -1,4 +1,4 @@
-function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ultraVirusImage) {
+function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ultraVirusImage, element) {
 
   let gameLoop = () => {
     myGameArea.clearCanvas()
@@ -7,6 +7,8 @@ function play(myGameArea, myPlayerPiece, myGameViruses, myScore, virusImage, ult
     myGameViruses.updateVirusesArray(virusImage, ultraVirusImage)
     for (let i = 0; i < myGameViruses.viruses.length; i += 1) {
       if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && myGameViruses.viruses[i].ultra) {
+        element.innerHTML = `<h1 class="game-over-heading">Game Over!</h1><p>You destroyed ${myScore.score} viruses!</p>
+        <button id="restart-game" type="button" name="restart-game">Play again</button>`
         location.hash = 'game-over';
         clearInterval(myIntervalId);
       } else if (myPlayerPiece.isCollidingWith(myGameViruses.viruses[i]) && !myGameViruses.viruses[i].ultra) {
