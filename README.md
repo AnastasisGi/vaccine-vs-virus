@@ -19,3 +19,4 @@ rackup
 ```
 
 Open your browser and navigate to `http://localhost:9292`
+Enjoy the app live `https://vaccine-vs-virus.herokuapp.com/`
